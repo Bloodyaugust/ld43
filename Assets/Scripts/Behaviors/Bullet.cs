@@ -16,7 +16,9 @@ public class Bullet : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D collision) {
-    _toolbox.BulletHit.Invoke();
+    if (collision.gameObject.tag == "Enemy") {
+      _toolbox.BulletHit.Invoke();
+    }
     Destroy(gameObject);
   }
 }
