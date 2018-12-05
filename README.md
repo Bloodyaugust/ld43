@@ -1,9 +1,5 @@
 # Slaybraham and Diesaac
 
-Use arrow keys to move. Kill as many Isaacs as you can!
+Use arrow keys or WASD to move. Kill as many Isaacs as you can!
 
-Made in ~8 hours for Ludum Dare 43 with:
-- Unity3D (2019.1.0a10)
-- Atom
-- Aseprite
-- Tilemancer
+Originally made for LD 43. This is now a post-compo version, look back at in the commit history for the compo version.
