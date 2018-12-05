@@ -450,6 +450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 407583658}
   EndScorePanel: {fileID: 901577977}
+  GameplayDataInstance: {fileID: 11400000, guid: 99b4bb59f7c76984185a3ef21b01e906,
+    type: 2}
   EndScoreText: {fileID: 912659297}
   BulletHit:
     m_PersistentCalls:
@@ -484,7 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43a5903da1d8c74d80bb2035cc25273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: -1
   _backgroundPrefab: {fileID: 2655592874415467104, guid: ea5374dbcdc6daf49afd8830a73c6774,
     type: 3}
 --- !u!1 &691766833

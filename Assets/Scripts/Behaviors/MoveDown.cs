@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveDown : MonoBehaviour {
-  public float Speed;
-
   bool _enabled = true;
+  [SerializeField]
+  bool _speedMatchBackground;
+  [SerializeField]
+  float _speed;
   Toolbox _toolbox;
 
   void Start() {
@@ -13,11 +15,15 @@ public class MoveDown : MonoBehaviour {
 
     _toolbox.GameStart.AddListener(OnGameStart);
     _toolbox.PlayerDied.AddListener(OnPlayerDied);
+
+    if (_speedMatchBackground) {
+      _speed = _toolbox.GameplayDataInstance.BackgroundSpeed;
+    }
   }
 
   void Update() {
     if (_enabled) {
-      transform.Translate(new Vector3(0, -Speed * Time.deltaTime, 0));
+      transform.Translate(new Vector3(0, -_speed * Time.deltaTime, 0));
     }
   }
 

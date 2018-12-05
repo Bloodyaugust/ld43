@@ -14,6 +14,7 @@ public class Toolbox : Singleton<Toolbox> {
 
   public GameObject ScoreText;
   public GameObject EndScorePanel;
+  public GameplayData GameplayDataInstance;
   public TextMeshProUGUI EndScoreText;
   public UnityEvent BulletHit;
   public UnityEvent EnemyDied;

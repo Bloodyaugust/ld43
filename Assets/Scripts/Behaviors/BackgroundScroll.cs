@@ -5,8 +5,8 @@ using UnityEngine;
 public class BackgroundScroll : MonoBehaviour {
   bool _enabled = false;
   Camera _mainCamera;
-  [SerializeField]
   float _speed;
+  float _startHeight;
   [SerializeField]
   GameObject _backgroundPrefab;
   GameObject[][] _background;
@@ -21,7 +21,7 @@ public class BackgroundScroll : MonoBehaviour {
       _background[i] = new GameObject[_backgroundWidth];
 
       for (int i2 = 0; i2 < _background[i].Length; i2++) {
-        _background[i][i2] = Instantiate(_backgroundPrefab, new Vector3(-_backgroundWidth / 2 + i2 + 0.5f, i - _backgroundHeight / 2 + 0.5f, _backgroundPrefab.transform.position.z), Quaternion.identity);
+        _background[i][i2] = Instantiate(_backgroundPrefab, new Vector3(-_backgroundWidth / 2 + i2 + 0.5f, i - _startHeight, _backgroundPrefab.transform.position.z), Quaternion.identity);
       }
     }
   }
@@ -33,6 +33,8 @@ public class BackgroundScroll : MonoBehaviour {
     _backgroundWidth = Mathf.CeilToInt(aspectRatio * _backgroundHeight);
 
     _backgroundHeight++;
+
+    _startHeight = _backgroundHeight / 2 + 0.5f;
   }
 
   void Start () {
@@ -44,18 +46,20 @@ public class BackgroundScroll : MonoBehaviour {
 
     SizeBackground();
     CreateBackground();
+
+    _speed = _toolbox.GameplayDataInstance.BackgroundSpeed;
   }
 
   void Update () {
     if (_enabled) {
-      Vector3 translateBy = new Vector3(0, _speed * Time.deltaTime, 0);
+      Vector3 translateBy = new Vector3(0, -_speed * Time.deltaTime, 0);
 
       for (int i = 0; i < _background.Length; i++) {
         for (int i2 = 0; i2 < _background[i].Length; i2++) {
           _background[i][i2].transform.Translate(translateBy);
 
           if (_background[i][i2].transform.position.y <= -_backgroundHeight / 2 - 0.5f) {
-            _background[i][i2].transform.position = new Vector3(_background[i][i2].transform.position.x, _backgroundHeight / 2 + 0.5f, _background[i][i2].transform.position.z);
+            _background[i][i2].transform.position = new Vector3(_background[i][i2].transform.position.x, _startHeight, _background[i][i2].transform.position.z);
           }
         }
       }
