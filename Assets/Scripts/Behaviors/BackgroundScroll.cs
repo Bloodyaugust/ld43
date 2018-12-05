@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour {
+  bool _enabled = false;
   Camera _mainCamera;
   [SerializeField]
   float _speed;
@@ -11,6 +12,7 @@ public class BackgroundScroll : MonoBehaviour {
   GameObject[][] _background;
   int _backgroundHeight;
   int _backgroundWidth;
+  Toolbox _toolbox;
 
   void CreateBackground () {
     _background = new GameObject[_backgroundHeight][];
@@ -35,23 +37,36 @@ public class BackgroundScroll : MonoBehaviour {
 
   void Start () {
     _mainCamera = Camera.main;
+    _toolbox = Toolbox.Instance;
 
+    _toolbox.GameStart.AddListener(OnGameStart);
+    _toolbox.PlayerDied.AddListener(OnPlayerDied);
 
     SizeBackground();
     CreateBackground();
   }
 
   void Update () {
-    Vector3 translateBy = new Vector3(0, _speed * Time.deltaTime, 0);
-    
-    for (int i = 0; i < _background.Length; i++) {
-      for (int i2 = 0; i2 < _background[i].Length; i2++) {
-        _background[i][i2].transform.Translate(translateBy);
+    if (_enabled) {
+      Vector3 translateBy = new Vector3(0, _speed * Time.deltaTime, 0);
 
-        if (_background[i][i2].transform.position.y <= -_backgroundHeight / 2 - 0.5f) {
-          _background[i][i2].transform.position = new Vector3(_background[i][i2].transform.position.x, _backgroundHeight / 2 + 0.5f, _background[i][i2].transform.position.z);
+      for (int i = 0; i < _background.Length; i++) {
+        for (int i2 = 0; i2 < _background[i].Length; i2++) {
+          _background[i][i2].transform.Translate(translateBy);
+
+          if (_background[i][i2].transform.position.y <= -_backgroundHeight / 2 - 0.5f) {
+            _background[i][i2].transform.position = new Vector3(_background[i][i2].transform.position.x, _backgroundHeight / 2 + 0.5f, _background[i][i2].transform.position.z);
+          }
         }
       }
     }
+  }
+
+  void OnGameStart () {
+    _enabled = true;
+  }
+
+  void OnPlayerDied () {
+    _enabled = false;
   }
 }
