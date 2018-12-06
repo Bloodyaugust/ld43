@@ -448,11 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823daff8ead7c194aa6f161f3c2810c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 407583658}
-  EndScorePanel: {fileID: 901577977}
   GameplayDataInstance: {fileID: 11400000, guid: 99b4bb59f7c76984185a3ef21b01e906,
     type: 2}
-  EndScoreText: {fileID: 912659297}
+  EnemiesKilled: 0
+  MostEnemiesKilled: 0
   BulletHit:
     m_PersistentCalls:
       m_Calls: []
@@ -559,7 +558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: (R)estart
 --- !u!222 &691766836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -579,7 +578,7 @@ GameObject:
   - component: {fileID: 901577978}
   - component: {fileID: 901577979}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: EndRun Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,7 +625,7 @@ GameObject:
   - component: {fileID: 912659298}
   - component: {fileID: 912659297}
   m_Layer: 0
-  m_Name: EndScore Text
+  m_Name: EndRun Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -953,6 +952,7 @@ GameObject:
   - component: {fileID: 1396322096}
   - component: {fileID: 1396322095}
   - component: {fileID: 1396322094}
+  - component: {fileID: 1396322097}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1020,6 +1020,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1396322097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396322093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 6ed4d4426d2376844ac8160a06634573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1766974674
 GameObject:
   m_ObjectHideFlags: 0
